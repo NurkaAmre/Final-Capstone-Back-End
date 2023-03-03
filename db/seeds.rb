@@ -5,8 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(user_name: "Joseph")
-User.create(user_name: "Nurka")
-User.create(user_name: "Omar")
-User.create(user_name: "Tanusri")
+User.create(user_name: 'Joseph')
+User.create(user_name: 'Nurka')
+User.create(user_name: 'Omar')
+User.create(user_name: 'Tanusri')
 
+Book.create(title: 'The Two Towers', author: 'J.R.R.Tolkein', book_cover_image: './app/img/book1-remove.png' , genre: 'novel', publisher: 'Willey', date_of_publication: '2023-03-03', pages: 100, language: 'english', isbn: '234-ty6-345', price: 230)
+Book.create(title: 'The Picture of Dorian Gray', author: 'Oscar Wilde', book_cover_image: './app/img/book2-remove.png' , genre: 'novel', publisher: 'Willey', date_of_publication: '2023-03-03', pages: 100, language: 'english', isbn: '234-ty6-345', price: 230)
+Book.create(title: 'Company of One', author: 'Paul Jarvis', book_cover_image: './app/img/book3-remove.png' , genre: 'novel', publisher: 'Willey', date_of_publication: '2023-03-03', pages: 100, language: 'english', isbn: '234-ty6-345', price: 230)
+Book.create(title: 'The Chronicles of Narnia', author: 'C.S.Lewis', book_cover_image: './app/img/book4-remove.png' , genre: 'novel', publisher: 'Willey', date_of_publication: '2023-03-03', pages: 100, language: 'english', isbn: '234-ty6-345', price: 230)
+
+
+
+Reservation.create(user_id: 1, book_id: 1, city: 'Kenya', date_of_booking: '2023-03-03', date_of_delivery: '2023-03-15' )
+Reservation.create(user_id: 2, book_id: 2, city: 'Almaty', date_of_booking: '2023-03-03', date_of_delivery: '2023-03-25')
+Reservation.create(user_id: 3, book_id: 3, city: 'Karachi', date_of_booking: '2023-03-03', date_of_delivery: '2023-03-20')
+Reservation.create(user_id: 4, book_id: 4, city: 'Kolkata', date_of_booking: '2023-03-03', date_of_delivery: '2023-03-20')
