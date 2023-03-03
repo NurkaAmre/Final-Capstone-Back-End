@@ -53,7 +53,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 Coin Counter <a name="about-project"></a>
 
-Our Booking app sends you Mars.
+Our Booking app sends you Mars.[Hello Rails Front End App](https://github.com/NurkaAmre/Final-Capstone-Front-end).
 
 ## 🛠 Built With <a name="built-with"></a>
 
