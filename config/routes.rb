@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  # resources :books
-  # resources :reservations
-  # resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get 'api/v1/books', to: 'books#index'
-  post 'api/v1/books', to: 'books#create'
-  delete 'api/v1/books/:id', to: 'books#destroy'
-
-  post 'api/v1/login', to: 'users#login'
-  post 'api/v1/signup', to: 'users#signup'
-  delete 'api/v1/reservation/:id', to: 'reservations#destroy'
-  post 'api/v1/reservation/', to: 'reservations#create'
-
+  devise_for :users, path: '', path_names: {
+                                 sign_in: 'login',
+                                 sign_out: 'logout',
+                                 registration: 'signup'
+                               },
+                     controllers: {
+                       sessions: 'users/sessions',
+                       registrations: 'users/registrations'
+                     }
+  namespace :api do
+    namespace :v1 do
+      resources :reservations, only: [:index, :destroy]
+      resources :bookss, only: [:index, :show, :new, :create, :destroy] do
+        resources :reservations , only: [:create]
+      end
+    end
+  end
 end
