@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def signup
-
     @username = user_params[:user_name]
     @user = User.new(username: @user_name)
     if @user.valid?
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
       render json: { message: 'User could not be created!', logged_in: false }, status: :not_acceptable
     end
   end
- 
+
   private
 
   def user_params
