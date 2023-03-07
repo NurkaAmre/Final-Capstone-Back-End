@@ -47,4 +47,6 @@ group :development do
 end
 
 gem 'devise'
-gem 'jwt'
+gem 'devise-jwt'
+gem 'jsonapi-serializer'
+gem 'rack_session_access'
