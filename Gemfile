@@ -46,7 +46,3 @@ group :development do
   # gem "spring"
 end
 
-gem 'devise'
-gem 'devise-jwt'
-gem 'jsonapi-serializer'
-gem 'rack_session_access'
