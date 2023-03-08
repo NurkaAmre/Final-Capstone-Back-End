@@ -1,11 +1,11 @@
+class Api::V1::UsersController < ApplicationController
 def create
   @new_user = User.new(
-    name: params[:name],
-    email: params[:email]
+    user_name: params[:user_name]
   )
 
   if @new_user.save
-    @resp = { id:  @new_user.id, name:  @new_user.name, email:  @new_user.email }
+    @resp = { id:  @new_user.id, name:  @new_user.user_name}
     render json: @resp
     response.status = 200
   else
@@ -15,11 +15,13 @@ def create
 end
 
 def show
-  if User.exists?(name: params[:user_name])
-    @user = User.find_by(name: params[:user_name])
-    @resp = { id: @user.id, name: @user.name, email: @user.email }
+  if User.exists?(user_name: params[:user_name])
+    @user = User.find_by(user_name: params[:user_name])
+    @resp = { id: @user.id, name: @user.user_name }
     render json: @resp, status: :ok
   else
     render json: 'User not found!', status: :not_found
   end
+end
+
 end
