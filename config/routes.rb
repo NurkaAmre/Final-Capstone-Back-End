@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', path_names: {
-    sign_in: 'login',
-    sign_out: 'logout',
-    registration: 'signup'
-  },
-  controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
   
-  namespace :api do
+  namespace :api do 
     namespace :v1 do
-      resources :reservations, only: [:index, :destroy]
-      resources :books, only: [:index, :show, :new, :create, :destroy] do
-        resources :reservations , only: [:create]
+      resources :users , only: [:create]
+      resources :users, only: [:show], param: :user_name
+      resources :books, only: [:create, :destroy]
+      resources :books, only: [:index, :show]
+      resources :users, only: [:show] do
+        resources :reservations, only: [:create, :index]
+
       end
     end
   end
