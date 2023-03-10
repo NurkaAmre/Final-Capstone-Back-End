@@ -1,0 +1,222 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/reservations":
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+        '406':
+          description: Reservation not created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                book_id:
+                  type: integer
+                city:
+                  type: string
+                date_of_booking:
+                  type: date
+                date_of_delivery:
+                  type: date
+              required:
+              - user_id
+              - book_id
+              - city
+              - date_of_booking
+              - date_of_delivery
+  "/api/v1/reservations/{id}":
+    delete:
+      summary: Deletes a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservation deleted
+        '404':
+          description: Reservation not found
+  "/api/v1/books":
+    post:
+      summary: Creates a book
+      tags:
+      - Books
+      parameters: []
+      responses:
+        '201':
+          description: Book has been created successfully!
+        '406':
+          description: Error !!!!.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                book_cover_image:
+                  type: string
+                genre:
+                  type: text
+                publisher:
+                  type: string
+                date_of_publication:
+                  type: date
+                pages:
+                  type: integer
+                language:
+                  type: string
+                isbn:
+                  type: string
+                price:
+                  type: integer
+              required:
+              - title
+              - author
+              - book_cover_image
+              - genre
+              - publisher
+    get:
+      summary: Retrieves Books
+      tags:
+      - Books
+      responses:
+        '200':
+          description: Books found
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                book_cover_image:
+                  type: string
+                genre:
+                  type: text
+                publisher:
+                  type: string
+                date_of_publication:
+                  type: date
+                pages:
+                  type: integer
+                language:
+                  type: string
+                isbn:
+                  type: string
+                price:
+                  type: integer
+                required:
+              - title
+              - author
+              - book_cover_image
+              - genre
+              - publisher
+  "/api/v1/books/{id}":
+    delete:
+      summary: Destroy a book
+      tags:
+      - Books
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Book has been destroyed successfully!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                   title:
+                  type: string
+                author:
+                  type: string
+                book_cover_image:
+                  type: string
+                genre:
+                  type: text
+                publisher:
+                  type: string
+                date_of_publication:
+                  type: date
+                pages:
+                  type: integer
+                language:
+                  type: string
+                isbn:
+                  type: string
+                price:
+                  type: integer
+  "/api/v1/signup":
+    post:
+      summary: Creates an user
+      tags:
+      - Users Signup
+      parameters: []
+      responses:
+        '201':
+          description: user has been created successfully
+        '406':
+          description: Not acceptable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+              required:
+              - user_name
+  "/api/v1/login":
+    post:
+      summary: Logs in as an user
+      tags:
+      - Users Login
+      parameters: []
+      responses:
+        '200':
+          description: Logged in
+        '404':
+          description: Error in log in process
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+              required:
+              - user_name
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
