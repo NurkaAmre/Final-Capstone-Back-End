@@ -1,31 +1,25 @@
 class Api::V1::ReservationsController < ApplicationController
-
   def index
-    @reservations = Reservation.includes(:book).where('user_id = ?', current_user)
+    @reservations = Reservation.where(user_id: params[:user_id])
 
-    render json: @reservations
-  end
-
-  def destroy
-    @reservation.destroy
-  end
-
-   def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.update(user: current_user, book: Book.find(params[:book_id]))
-
-    if @reservation.save
-      render json: @reservation, status: :created, location: @reservation
+    if @reservations.empty?
+      render json: 'Nothing Found!', status: :not_found
     else
-      render json: @reservation.errors, status: :unprocessable_entity
+      render json: @reservations, status: :ok
     end
   end
 
-  def set_reservation
-    @reservation = Reservation.find(params[:id])
+  def create
+    @new_reservation = Reservation.new(reservation_params)
+
+    if @new_reservation.save
+      render json: 'Resevation Created!', status: :ok
+    else
+      render json: 'Failed!', status: :unprocessable_entity
+    end
   end
 
   def reservation_params
-    params.require(:reservation).permit(:id, :user_id, :book_id, :city, :date_of_booking, :date_of_delivery)
+    params.require(:reservation).permit(:user_id, :book_id, :city, :date_of_booking, :date_of_delivery)
   end
 end
