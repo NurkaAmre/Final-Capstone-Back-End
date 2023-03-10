@@ -101,6 +101,8 @@ Our Booking app sends you Mars.[Hello Rails Front End App](https://github.com/Nu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+![drawSQL-library-capstone-export-2023-03-10](https://user-images.githubusercontent.com/107000157/224308338-ac5afe0a-e4d2-413d-aa17-bcd0b62a5372.png)
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
